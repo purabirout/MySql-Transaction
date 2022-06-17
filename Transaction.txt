@@ -1,0 +1,30 @@
+create table EmployeeDetail(emp_id int primary key,emp_name varchar(20)not null,emp_age int, city varchar(12) ,income varchar(15));
+create table OrderDetails(Order_ID int primary key,Product_Name varchar(20),Order_Num int,Order_Date Date);
+
+1. start a new transaction
+
+START TRANSACTION;
+
+2. get the highest income
+
+SELECT max(income) from EmployeeDetail;
+
+ 3. Insert a new record into the employee table 
+
+
+INSERT INTO  EmployeeDetail(emp_id,emp_name,emp_age,city,income)values(101,'purvi',26,'Newyork',20000),(102,'Rubi',27,'london',1000000),(103,'suchi',28,'US',1500000);
+
+4. Insert a new record into the order table 
+
+INSERT INTO OrderDetails(Order_ID,Product_Name,Order_Num,Order_Date) values(2,'Laptop',1252,'2020-06-25'),(3,'Monitor',8769,'2020-09-10');
+
+
+SAVEPOINT my_savepoint;
+
+5. Commit changes
+
+COMMIT;
+ROLLBACK;
+ROLLBACK TO SAVEPOINT my_savepoint;
+select * from OrderDetails;
+select * from EmployeeDetail;
